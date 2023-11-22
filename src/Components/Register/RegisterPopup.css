@@ -1,0 +1,80 @@
+/* RegisterPopup.css */
+
+.register-popup {
+    position: fixed;
+    top: 50%; /* Center the popup vertically */
+    left: 50%; /* Center the popup horizontally */
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears above other content */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    width: 600px; /* Adjust width as needed */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  .popup-content {
+    /* Other styles for the form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .popup-content select {
+    width: calc(100%); /* Match the width of other input fields */
+    margin-bottom: 15px; /* Match the margin of other input fields */
+    padding: 10px; /* Match the padding of other input fields */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .popup-content input {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup-content button {
+    width: calc(50% - 5px);
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .popup-content button:nth-child(2) {
+    background-color: #dc3545; /* Change button color for "Close" */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  button {
+    width: 200px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:nth-child(2) {
+    width: 200px;
+    background-color: #d48188;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
