@@ -3,17 +3,42 @@
 import React, { useState } from 'react';
 import './Login.css'; // Import your CSS file for styling
 import RegisterPopup from '../Register/RegisterPopup';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
 
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Perform login logic
     console.log('Logging in with:', username, password);
     // You can integrate this with your authentication logic
+    try {
+      const response = await fetch('http://localhost:5115/api/Auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const authToken = data.token; // Assuming the token is provided in the response
+        setToken(authToken);
+        // You may want to redirect the user or perform additional actions upon successful login
+        <Navigate to='/user' />
+
+      } else {
+        // Handle login error - display a message to the user, etc.
+      }
+    } catch (error) {
+      // Handle network errors or other exceptions
+    }
   };
 
   const handleRegisterClick = () => {

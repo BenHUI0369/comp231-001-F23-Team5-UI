@@ -14,13 +14,20 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import background from './medical.jpg';
 import RegisterPopup from '../Register/RegisterPopup';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { signal } from '@preact/signals-react';
+import SimpleSnackbar from '../Snackbar/Snackbar';
+
+export const userEmail = signal('');
+export const userId = signal('');
+export const isAuthenticated = signal(null);
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        PatientRecord
+        BenHUI - PatientRecord
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,7 +42,12 @@ const defaultTheme = createTheme();
 
 
 export default function SignInSide() {
+  const nav = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
   const [showRegisterPopup, setShowRegisterPopup] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
   
 
   const handleRegisterClick = () => {
@@ -44,6 +56,14 @@ export default function SignInSide() {
 
   const handleClosePopup = () => {
     setShowRegisterPopup(false);
+    if (showSnackbar)
+    {
+      setShowSnackbar(false);
+    }
+    else
+    {
+      setShowSnackbar(true);
+    }
   };
 
   
@@ -54,15 +74,78 @@ export default function SignInSide() {
 
     // Close the popup after registration
     setShowRegisterPopup(false);
+    if (showSnackbar)
+    {
+      setShowSnackbar(false);
+    }
+    else
+    {
+      setShowSnackbar(true);
+    }
   };
 
-  const handleSubmit = (event) => {
+  const findUserIdFromDB = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    console.log('Finding Id......');
+    try {
+      const response = await fetch('https://localhost:7146/api/Auth/findId', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username }),
+      });
+
+      if (response.ok) {
+        console.log('Found!');
+        userId.value = await response.text();
+        //const authToken = data.token; // Assuming the token is provided in the response
+        // You may want to redirect the user or perform additional actions upon successful login
+        localStorage.setItem('userID', userId.value);
+        console.log(userId.value);
+      } else {
+        // Handle login error - display a message to the user, etc.
+        console.log('not good');
+      }
+    } catch (error) {
+      // Handle network errors or other exceptions
+      console.log('error', error);
+    }
+    
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log('Logging in with:', username, password);
+    findUserIdFromDB(event);
+    // You can integrate this with your authentication logic
+    try {
+      const response = await fetch('https://localhost:7146/api/Auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        console.log('all good', username, password);
+        userEmail.value = username;
+        const token = await response.text();
+        //const authToken = data.token; // Assuming the token is provided in the response
+        localStorage.setItem('token', token);
+        isAuthenticated.value = localStorage.getItem('token');
+        // You may want to redirect the user or perform additional actions upon successful login
+        console.log(userEmail.value);
+        nav("/user");
+      } else {
+        // Handle login error - display a message to the user, etc.
+        console.log('not good');
+      }
+    } catch (error) {
+      // Handle network errors or other exceptions
+      console.log('error', error);
+    }
   };
 
   return (
@@ -104,10 +187,11 @@ export default function SignInSide() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="username"
                 label="Email Address"
-                name="email"
-                autoComplete="email"
+                name="username"
+                autoComplete="username"
+                onChange={(e) => setUsername(e.target.value)}
                 autoFocus
               />
               <TextField
@@ -118,6 +202,7 @@ export default function SignInSide() {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
               />
               <FormControlLabel
@@ -132,6 +217,10 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
+              <SimpleSnackbar 
+                message={"Account Created!"}
+                showSnackbar={showSnackbar}
+              />
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

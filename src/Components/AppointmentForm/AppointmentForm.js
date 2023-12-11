@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import './AppointmentForm.css'; // Make sure the CSS file is in the correct path
+import { storedUserId } from '../Dashboard/Profilo';
+import { Navigate, useNavigate  } from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import { signal } from '@preact/signals-react';
+import {createAppointmentRecord} from '../Dashboard/Appointment'
 
 function AppointmentForm() {
+  const navigate = useNavigate();
   // Initialize state for the form data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    gender: 'Male',
+    gender: 'M',
     date: '',
-    time: '08:00 AM',
+    time: '08:00:00',
     message: ''
   });
+
 
   // Function to handle changes to each input
   const handleChange = (e) => {
@@ -23,18 +30,56 @@ function AppointmentForm() {
   };
 
   // Function to handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(formData); // Here, you can integrate an API call to send the data
+    createAppointment();
+    createAppointmentRecord.value = true;
   };
+
+
+    const createAppointment  = async () => {
+      try {
+        const response = await fetch(`https://localhost:7146/patientrecords/appointment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            UserId: storedUserId,
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            gender: formData.gender,
+            preferredDate: formData.date,
+            preferredTime: formData.time,
+            message: formData.message
+           }),
+        });
+        console.log("show from data: " + formData.name);
+        console.log(response);
+        if (response.ok) {
+          console.log('Appointment Created Successfully!');
+          navigate('/user');
+          createAppointment.value = true;
+          //setUserData(userInfo); // Update state with fetched user data
+        } else {
+          const errorText = await response.text(); // Extract the error message from the response
+      console.error('Failed to create appointment:', errorText);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
 
   return (
     <div className="container">
       <div className="appointment-form">
         <h1>Doctor Appointment</h1>
-        <form id="appointment-form" onSubmit={handleSubmit}>
+        <form id="appointment-form">
           <label htmlFor="name">Name:</label>
-          <input 
+          <input
             type="text"
             id="name"
             name="name"
@@ -44,8 +89,8 @@ function AppointmentForm() {
           />
 
           <label htmlFor="email">Email:</label>
-          <input 
-            type="email"
+          <input
+            type="text"
             id="email"
             name="email"
             required
@@ -54,8 +99,8 @@ function AppointmentForm() {
           />
 
           <label htmlFor="phone">Phone Number:</label>
-          <input 
-            type="tel"
+          <input
+            type="text"
             id="phone"
             name="phone"
             required
@@ -71,13 +116,13 @@ function AppointmentForm() {
             value={formData.gender}
             onChange={handleChange}
           >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
           </select>
 
           <label htmlFor="date">Preferred Date:</label>
-          <input 
+          <input
             type="date"
             id="date"
             name="date"
@@ -88,20 +133,22 @@ function AppointmentForm() {
 
           <label htmlFor="time">Preferred Time:</label>
           <select
+            type="text"
             id="time"
             name="time"
             required
             value={formData.time}
             onChange={handleChange}
           >
-            <option value="08:00 AM">08:00 AM</option>
-            <option value="10:00 AM">10:00 AM</option>
-            <option value="02:00 PM">02:00 PM</option>
-            <option value="04:00 PM">04:00 PM</option>
+            <option value="08:00:00">08:00 AM</option>
+            <option value="10:00:00">10:00 AM</option>
+            <option value="14:00:00">02:00 PM</option>
+            <option value="16:00:00">04:00 PM</option>
           </select>
 
           <label htmlFor="message">Message:</label>
-          <textarea 
+          <textarea
+            type="text"
             id="message"
             name="message"
             rows="4"
@@ -110,8 +157,10 @@ function AppointmentForm() {
             onChange={handleChange}
           ></textarea>
 
-          <button type="submit">Request Appointment</button>
+          <button type="submit" onClick={handleSubmit}>Request Appointment</button>
         </form>
+        <div className="bar">
+        </div>
       </div>
     </div>
   );

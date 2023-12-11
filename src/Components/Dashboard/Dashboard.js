@@ -19,16 +19,17 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
-import Deposits from './UpdateProfilo';
+import UpdateProfilo from './UpdateProfilo';
 import Orders from './Appointment';
 import Profilo from './Profilo';
+import SimpleSnackbar from '../Snackbar/Snackbar';
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        BenHUI - PatientRecord
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -181,14 +182,18 @@ export default function Dashboard() {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 540,
+                    height: 740,
                   }}
                 >
                   <Profilo toggleVariable={toggleVariable}/>
+                  <SimpleSnackbar 
+                message={"Information Updated!"}
+                showSnackbar={!variable}
+              />
                 </Paper>
               </Grid>
               </Box>
-              {/* Recent Deposits */}
+              {/* Recent UpdateProfilo */}
               <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Grid item xs={12} md={4} lg={6} sx={{display: !variable? 'block': 'none'}}>
                 <Paper
@@ -199,7 +204,7 @@ export default function Dashboard() {
                     height: 740,
                   }}
                 >
-                  <Deposits toggleVariable={toggleVariable}/>
+                  <UpdateProfilo toggleVariable={toggleVariable}/>
                 </Paper>
               </Grid>
               </Box>
