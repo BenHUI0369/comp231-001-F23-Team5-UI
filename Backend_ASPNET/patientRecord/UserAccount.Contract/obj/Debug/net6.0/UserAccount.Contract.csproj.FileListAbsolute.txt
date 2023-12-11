@@ -1,0 +1,12 @@
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\bin\Debug\net6.0\UserAccount.Contract.deps.json
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\bin\Debug\net6.0\UserAccount.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\bin\Debug\net6.0\UserAccount.Contract.pdb
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.csproj.AssemblyReference.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.GeneratedMSBuildEditorConfig.editorconfig
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.AssemblyInfoInputs.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.AssemblyInfo.cs
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.csproj.CoreCompileInputs.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\refint\UserAccount.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\UserAccount.Contract.pdb
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\UserAccount.Contract\obj\Debug\net6.0\ref\UserAccount.Contract.dll

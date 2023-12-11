@@ -1,0 +1,48 @@
+@id=a3636f8d-4b4c-4e80-8cda-d694abb4e12e
+
+PUT http://localhost:5115/patientrecords/{{id}}
+Content-Type: application/json
+
+{
+    "firstName": "Marry",
+    "lastName": "Hehe",
+    "dateOfBirth": "1980-05-15",
+    "gender": "F",
+    "contactInformation": 
+    {
+      "email": "peterchan@gmail.com",
+      "phone": "111-1111-1111",
+      "address": 
+      {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "A1A1A1"
+      }
+    },
+    "medicalHistory":
+    [
+        {
+        "Allergies": "Penicillin",
+        "Conditions": "Hypertension",
+        "Medications": "Aspirin"
+        }
+    ]
+}
+
+###
+PUT http://localhost:5115/patientrecords/{{id}}
+Content-Type: application/json
+
+{
+  "firstName": "Ben22",
+  "lastName": "Hui22",
+  "dateOfBirth": "1995-03-03T00:00:00",
+  "gender": "M",
+  "contactEmail": "Ben22@example.com",
+  "contactPhone": "333-3333-3333",
+  "contactStreet": "6322 Plumbrook",
+  "contactCity": "Toronto",
+  "contactState": "ON",
+  "contactPostalCode": "M1S3Z9"
+}

@@ -1,0 +1,12 @@
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\bin\Debug\net6.0\PatientRecord.Contract.deps.json
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\bin\Debug\net6.0\PatientRecord.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\bin\Debug\net6.0\PatientRecord.Contract.pdb
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.csproj.AssemblyReference.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.GeneratedMSBuildEditorConfig.editorconfig
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.AssemblyInfoInputs.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.AssemblyInfo.cs
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.csproj.CoreCompileInputs.cache
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\refint\PatientRecord.Contract.dll
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\PatientRecord.Contract.pdb
+D:\CentennialCollege\Sem4\COMP231-Project\Backend\patientRecord\PatientRecord.Contract\obj\Debug\net6.0\ref\PatientRecord.Contract.dll

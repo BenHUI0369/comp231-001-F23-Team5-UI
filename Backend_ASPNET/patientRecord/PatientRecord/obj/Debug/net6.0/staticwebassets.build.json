@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "GTr+c+BSv1U0yAC1b3WbrDM4QXoh7K7ajQFq3h8IYdw=",
+  "Source": "PatientRecord",
+  "BasePath": "_content/PatientRecord",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

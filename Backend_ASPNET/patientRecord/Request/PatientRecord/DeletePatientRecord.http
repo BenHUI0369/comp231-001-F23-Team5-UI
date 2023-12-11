@@ -1,0 +1,4 @@
+@id=bf2ce70f-6ce9-4c33-81a0-9de9645ce96aaa
+
+DELETE http://localhost:5115/patientrecords/{{id}}
+

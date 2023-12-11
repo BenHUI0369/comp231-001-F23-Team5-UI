@@ -1,0 +1,70 @@
+POST http://localhost:5115/patientrecords
+Content-Type: application/json
+
+{
+    "firstName": "Peter",
+    "lastName": "Chan2",
+    "dateOfBirth": "1980-05-15",
+    "gender": "M",
+    "contactInformation": 
+    {
+      "email": "peterchan@gmail.com",
+      "phone": "111-1111-1111",
+      "address": 
+      {
+      "street": "123 Main St",
+      "city": "Anytown",
+      "state": "CA",
+      "postalCode": "A1A1A1"
+      }
+    },
+    "medicalHistory":
+    [
+        {
+        "Allergies": "Penicillin",
+        "Conditions": "Hypertension",
+        "Medications": "Aspirin"
+        }
+    ]
+}
+
+###
+GET  https://localhost:7146/patientrecords/1f99e36a-8d5a-4b42-8b61-19d1c4d2960a
+
+###
+POST http://localhost:5115/patientrecords
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiIiwiZXhwIjoxNzAwMTY5NDU3fQ.xY5049MUGJnaPOm0WdvpGaNi7H5lEHUW0rfrYhLVzVB17UmdjBYetjy58-vj4t7z4vN2eVNM-R92Plbyiwwtw
+
+{
+  "firstName": "Ben33333",
+  "lastName": "Hui33333",
+  "dateOfBirth": "1995-03-03T00:00:00",
+  "gender": "M",
+  "contactEmail": "Ben@example.com",
+  "contactPhone": "333-3333-3333",
+  "contactStreet": "63 Plumbrook",
+  "contactCity": "Toronto",
+  "contactState": "ON",
+  "contactPostalCode": "M1S3Z9"
+}
+
+
+###register
+POST http://localhost:5115/api/Auth/register
+Content-Type: application/json
+Authorization: Bearer <your-jwt-token>
+
+{
+  "username": "string1",
+  "password": "string1"
+}
+
+###login
+POST http://localhost:5115/api/Auth/login
+Content-Type: application/json
+
+{
+  "username": "string",
+  "password": "string"
+}
